@@ -14,12 +14,12 @@
 
 			<header>
         {% block header %}
-          {% include '_header.html' %}
+          {% include 'snippets/header.html' %}
         {% endblock %}
       </header>
 
       {% block navbar %}
-        {% include '_navbar.html' %}
+        {% include 'snippets/navbar.html' %}
       {% endblock %}
 
       <main>
@@ -30,7 +30,7 @@
 
       <footer>
         {% block footer %}
-          {% include '_footer.html' %}
+          {% include 'snippets/footer.html' %}
         {% endblock %}
       </footer>
 
