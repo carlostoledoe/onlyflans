@@ -13,14 +13,14 @@
     <div class="container">
 
 			<header>
-        <div class="text-center">
-          <a href="/"><img src="{% static 'img/logo.png' %}" alt="logo Onlyflans" class=""></a>
-        </div>
-
-        {% block navbar %}
-          {% include '_navbar.html' %}
+        {% block header %}
+          {% include '_header.html' %}
         {% endblock %}
       </header>
+
+      {% block navbar %}
+        {% include '_navbar.html' %}
+      {% endblock %}
 
       <main>
         {% block content %}
