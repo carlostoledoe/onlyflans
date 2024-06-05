@@ -19,3 +19,15 @@ a:hover {
     color:#00afe8;
 }
 
+
+/* Estilos de la Card del Index */
+.en-oferta {
+    color: rgb(255, 48, 48);
+    font-size: 0.9rem;
+}
+
+.precio-normal {
+    color:rgb(64, 64, 255);
+    font-size: 0.9rem;
+}
+

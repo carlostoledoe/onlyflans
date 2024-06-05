@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Lista de Pasteles</h1>
+  <h1 class="my-3">Lista de Pasteles</h1>
   <div class="row">
     {% for producto in productos %}
       <div class="col-3">
@@ -12,8 +12,14 @@
             <p class="card-text">{{ producto.descripcion }}</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ producto.precio }}</li>
-            <li class="list-group-item">En oferta</li>
+            <li class="list-group-item">Precio: ${{ producto.precio }}</li>
+            <li class="list-group-item">
+              {% if producto.oferta %}
+                <span class="en-oferta">En Oferta</span>
+              {% else %}
+                <span class="precio-normal">Precio Normal</span>
+              {% endif %}
+            </li>
           </ul>
           <div class="card-body">
             <a href="#" class="card-link">Pedir</a>
