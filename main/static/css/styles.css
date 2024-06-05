@@ -1,0 +1,21 @@
+/* Estilos generales */
+a:hover {
+    color:#00afe8 !important;
+}
+
+/* Estilos del Navbar */
+.btn-outline-primary {
+    color: #00afe8;
+    border-color: #00afe8;
+}
+
+.btn-outline-primary:hover {
+    background-color:#00afe8;
+    color: white;
+    border-color: #00afe8;
+}
+
+.nav-link:hover {   
+    color:#00afe8;
+}
+
