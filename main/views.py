@@ -16,3 +16,9 @@ def about(request):
 
 def welcome(request):
     return render(request, 'welcome.html')
+
+def prices(request):
+    return render(request, 'prices.html')
+
+def ayuda(request):
+    return render(request, 'ayuda.html')
