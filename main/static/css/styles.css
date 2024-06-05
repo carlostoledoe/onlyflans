@@ -3,6 +3,11 @@ a:hover {
     color:#00afe8 !important;
 }
 
+h1, p {
+    color: rgb(77, 77, 77);
+}
+
+
 /* Estilos del Navbar */
 .btn-outline-primary {
     color: #00afe8;
@@ -31,3 +36,13 @@ a:hover {
     font-size: 0.9rem;
 }
 
+/* Estilos del formulario */
+.btn-color {
+    background-color: #00afe8;
+    color: white;
+}
+
+.btn-color:hover {
+    background-color: #085eff;
+    color: white;
+}
