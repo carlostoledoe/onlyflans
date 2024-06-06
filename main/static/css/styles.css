@@ -7,6 +7,9 @@ h1, p {
     color: rgb(77, 77, 77);
 }
 
+a {
+    text-decoration: none;
+}
 
 /* Estilos del Navbar */
 .btn-outline-primary {
@@ -39,6 +42,7 @@ h1, p {
 /* Estilos del formulario */
 .btn-color {
     background-color: #00afe8;
+    border-color: #00afe8;
     color: white;
 }
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 import os
 
@@ -22,3 +22,22 @@ def prices(request):
 
 def ayuda(request):
     return render(request, 'ayuda.html')
+
+def contact_form(request):
+    errores = [] 
+    customer_name = request.POST['customer_name']
+    customer_email = request.POST['customer_email']
+    message = request.POST['message']
+    
+    if len(customer_name) > 10:
+        errores.append('Largo del nombre mayor a 10 carácteres')
+
+    if not '@' in customer_email:
+        errores.append('Falta el arroba en el correo')
+
+    context = {'errores': errores}
+
+    if len(errores) > 0:
+        return render(request, 'welcome.html', context)
+    else:
+        return render(request, 'success.html', context)
