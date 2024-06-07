@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from main.forms import FlanForm
 import json
 import os
 
@@ -15,7 +16,16 @@ def about(request):
     return render(request, 'about.html')
 
 def welcome(request):
-    return render(request, 'welcome.html')
+    if request.method == 'GET':
+        form = FlanForm()
+        context = {'form': form}
+        return render(request, 'welcome.html', context)
+    else:
+        form = FlanForm(request.POST)
+        if form.is_valid():
+            return redirect('/success')
+        context = {'form': form}
+        return render(request, 'welcome.html', context)
 
 def prices(request):
     return render(request, 'prices.html')
@@ -23,21 +33,24 @@ def prices(request):
 def ayuda(request):
     return render(request, 'ayuda.html')
 
-def contact_form(request):
-    errores = [] 
-    customer_name = request.POST['customer_name']
-    customer_email = request.POST['customer_email']
-    message = request.POST['message']
+# def contact_form(request):
+#     errores = [] 
+#     customer_name = request.POST['customer_name']
+#     customer_email = request.POST['customer_email']
+#     message = request.POST['message']
     
-    if len(customer_name) > 10:
-        errores.append('Largo del nombre mayor a 10 carácteres')
+#     if len(customer_name) > 10:
+#         errores.append('Largo del nombre mayor a 10 carácteres')
 
-    if not '@' in customer_email:
-        errores.append('Falta el arroba en el correo')
+#     if not '@' in customer_email:
+#         errores.append('Falta el arroba en el correo')
 
-    context = {'errores': errores}
+#     context = {'errores': errores}
 
-    if len(errores) > 0:
-        return render(request, 'welcome.html', context)
-    else:
-        return render(request, 'success.html', context)
+#     if len(errores) > 0:
+#         return render(request, 'welcome.html', context)
+#     else:
+#         return render(request, 'success.html', context)
+
+def success(request):
+    return render(request, 'success.html')
