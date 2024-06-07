@@ -17,15 +17,15 @@ def about(request):
 
 def welcome(request):
     if request.method == 'GET':
-        form = FlanForm()
-        context = {'form': form}
-        return render(request, 'welcome.html', context)
+        form = FlanForm() # Se crea una instancia del formulario FlanForm sin datos iniciales.
+        context = {'form': form} # Se crea un contexto que contiene el formulario vacío.
+        return render(request, 'welcome.html', context) # Se renderiza la plantilla 'welcome.html' con el contexto.
     else:
-        form = FlanForm(request.POST)
-        if form.is_valid():
-            return redirect('/success')
-        context = {'form': form}
-        return render(request, 'welcome.html', context)
+        form = FlanForm(request.POST) # Se crea una instancia de FlanForm con los datos enviados en la solicitud POST.
+        if form.is_valid(): # Se verifica si los datos del formulario son válidos.
+            return redirect('/success') # Si el formulario es válido, se redirige al usuario a la URL '/success'.
+        context = {'form': form} # Se crea un contexto que contiene el formulario con los datos (válidos o no).
+        return render(request, 'welcome.html', context) # Se vuelve a renderizar la plantilla con el contexto actualizado.
 
 def prices(request):
     return render(request, 'prices.html')
