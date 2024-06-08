@@ -1,11 +1,12 @@
 from django import forms
 
-class FlanForm(forms.Form):
+class ContactForm(forms.Form):
     nombre = forms.CharField(
         max_length=10,
         label='Nombre:',
         widget=forms.TextInput(attrs={
-            'class': 'form-control mb-3'
+            'class': 'form-control mb-3',
+            'placeholder': 'Ingrese nombre aquí'
         })
     )
     email = forms.EmailField(
@@ -21,5 +22,6 @@ class FlanForm(forms.Form):
         widget=forms.Textarea(attrs={
             'class': 'form-control mb-3',
             'rows': 5,
+            'placeholder': 'Ingrese mensaje'
         })
     )
