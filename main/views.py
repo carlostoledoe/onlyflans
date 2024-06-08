@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from main.forms import ContactForm
+from main.models import Contact
+
 import json
 import os
 
@@ -23,6 +25,9 @@ def welcome(request):
     else:
         form = ContactForm(request.POST) # Se crea una instancia de FlanForm con los datos enviados en la solicitud POST.
         if form.is_valid(): # Se verifica si los datos del formulario son válidos.
+            Contact.objects.create(
+                **form.cleaned_data
+            ) # Esta es la forma de pedirle a un modelo que cree un registro usando los datos de un formulario
             return redirect('/success') # Si el formulario es válido, se redirige al usuario a la URL '/success'.
         context = {'form': form} # Se crea un contexto que contiene el formulario con los datos (válidos o no).
         return render(request, 'welcome.html', context) # Se vuelve a renderizar la plantilla con el contexto actualizado.
