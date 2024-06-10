@@ -3,21 +3,21 @@
 {% block content %}
   <h1 class="my-3">Lista de Pasteles</h1>
   <div class="row">
-    {% for producto in productos %}
+    {% for flan in flanes %}
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
         <div class="card">
-          <img src="{{ producto.imagen_url }}" class="card-img-top" alt="...">
+          <img src="{{ flan.image_url }}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{ producto.nombre }}</h5>
-            <p class="card-text">{{ producto.descripcion }}</p>
+            <h5 class="card-title">{{ flan.name }}</h5>
+            <p class="card-text">{{ flan.descripction }}</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Precio: ${{ producto.precio }}</li>
+            <li class="list-group-item">Precio: (No definido)</li>
             <li class="list-group-item">
-              {% if producto.oferta %}
-                <span class="en-oferta">En Oferta</span>
+              {% if flan.is_private %}
+                <span class="en-oferta">Flan Privado</span>
               {% else %}
-                <span class="precio-normal">Precio Normal</span>
+                <span class="precio-normal">Flan Publico</span>
               {% endif %}
             </li>
           </ul>
