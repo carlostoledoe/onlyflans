@@ -46,5 +46,21 @@
     "imagen_url": "https://images.aws.nestle.recipes/resized/2020_04_29T14_58_46_mrs_ImageRecipes_145026lrg_1080_850.jpg",
     "precio": 3700,
     "oferta": false
+  },
+  {
+    "id": 7,
+    "nombre": "Flan Jugoso",
+    "descripcion": "Sabroso flan a que te dejará con la boca jugosa",
+    "imagen_url": "https://content-cocina.lecturas.com/medio/2021/10/21/flan-de-platano_00000000_240112104108_900x900.jpg",
+    "precio": 4700,
+    "oferta": false
+  },
+  {
+    "id": 8,
+    "nombre": "Flan Secreto",
+    "descripcion": "Flan especial a base de ingredientes secretos",
+    "imagen_url": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2020/02/12/5e997763e91be.jpeg",
+    "precio": 5700,
+    "oferta": false
   }
 ]
