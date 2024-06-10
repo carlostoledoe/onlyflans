@@ -7,9 +7,14 @@ import os
 
 # Create your views here.
 def index(request):
-    flanes = Flan.objects.all()
-    context = {'flanes': flanes}
+    flanes_publicos = Flan.objects.filter(is_private=False)
+    context = {'flanes': flanes_publicos}
     return render(request, 'index.html', context)
+
+def private(request):
+    flanes_privados = Flan.objects.filter(is_private=True)
+    context = {'flanes': flanes_privados}
+    return render(request, 'private.html', context)
 
 def about(request):
     return render(request, 'about.html')
@@ -56,3 +61,4 @@ def ayuda(request):
 
 def success(request):
     return render(request, 'success.html')
+
