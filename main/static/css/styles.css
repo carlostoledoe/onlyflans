@@ -88,3 +88,11 @@ a {
         transform: translateX(0); /* Comienza a mover la imagen fuera de la pantalla */
     }
 }
+
+/* Estilos de header */
+
+@media (max-width: 575.98px) { 
+    header img  {
+        height: 3rem;
+    }
+}
