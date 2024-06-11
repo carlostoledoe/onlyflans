@@ -21,17 +21,17 @@ def about(request):
 
 def contact(request):
     if request.method == 'GET':
-        form = ContactForm() # Se crea una instancia del formulario FlanForm sin datos iniciales.
-        context = {'form': form} # Se crea un contexto que contiene el formulario vacío.
-        return render(request, 'contact.html', context) # Se renderiza la plantilla 'welcome.html' con el contexto.
+        form = ContactForm()                    # Se crea una instancia del formulario ContactForm sin datos iniciales.
+        context = {'form': form}                # Se crea un contexto que contiene el formulario vacío.
+        return render(request, 'contact.html', context) # Se renderiza la plantilla 'contact.html' con el contexto.
     else:
-        form = ContactForm(request.POST) # Se crea una instancia de FlanForm con los datos enviados en la solicitud POST.
-        if form.is_valid(): # Se verifica si los datos del formulario son válidos.
+        form = ContactForm(request.POST)        # Se crea una instancia de ContactForm con los datos enviados en la solicitud POST.
+        if form.is_valid():                     # Se verifica si los datos del formulario son válidos.
             Contact.objects.create(
                 **form.cleaned_data
-            ) # Esta es la forma de pedirle a un modelo que cree un registro usando los datos de un formulario
-            return redirect('/success') # Si el formulario es válido, se redirige al usuario a la URL '/success'.
-        context = {'form': form} # Se crea un contexto que contiene el formulario con los datos (válidos o no).
+            )                                   # Esta es la forma de pedirle a un modelo que cree un registro usando los datos de un formulario
+            return redirect('/success')         # Si el formulario es válido, se redirige al usuario a la URL '/success'.
+        context = {'form': form}                # Se crea un contexto que contiene el formulario con los datos (válidos o no).
         return render(request, 'contact.html', context) # Se vuelve a renderizar la plantilla con el contexto actualizado.
 
 def prices(request):
