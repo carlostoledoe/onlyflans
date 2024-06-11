@@ -16,8 +16,16 @@ class Flan(models.Model):
     image_url = models.URLField()
     slug = models.SlugField()
     is_private = models.BooleanField()
+    
+    def __str__(self):
+        return self.name
 
 class Contact(models.Model):
     nombre = models.CharField(max_length=10)
     email = models.CharField(max_length=20)
     mensaje = models.CharField(max_length=100)
+    
+    def __str__(self):
+        name = self.nombre
+        message = self.mensaje
+        return f'{name} : {message}'
