@@ -2,9 +2,12 @@ from django.contrib import admin
 from main.models import Flan, Contact
 # Register your models here.
 
-class PersonaAdmin(admin.ModelAdmin):
+class ContactAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Contact, PersonaAdmin)
+admin.site.register(Contact, ContactAdmin)
 
-admin.site.register(Flan)
+class FlanAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Flan, FlanAdmin)
