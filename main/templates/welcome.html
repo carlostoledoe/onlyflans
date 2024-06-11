@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1 class="my-3">Lista de Pasteles Privados</h1>
+  <h1>Bienvenido {{ user.username | title }}</h1>
+  <p>Accede a los más sabrosos flanes exclusivos para usuarios registrados</p>
+  <h4 class="my-3">Lista de Pasteles Privados</h4>
   <div class="row">
     {% for flan in flanes %}
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
