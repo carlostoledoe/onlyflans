@@ -23,11 +23,16 @@
           {% if user.is_authenticated %}
             <div class="d-flex align-items-center justify-content-end">
               <p class="mb-1">Bienvenido, <span class="user-name-color">{{ user.username }}</span></p>
+              <form id="logout-form" action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger ms-2 btn-sm mb-1">Logout</button>
+              </form>
             </div>
           {% else %}
             <div class="d-flex align-items-center justify-content-end">
               <p class="mb-1">Por favor, inicia sesión</p>
-              <a href="#" class="ms-2"><button type="button" class="btn btn-color btn-sm mb-1">Iniciar sesión</button></a>
+              {% csrf_token %}
+              <a href="/admin" class="ms-2"><button type="button" class="btn btn-color btn-sm mb-1">Iniciar sesión</button></a>
             </div>
           {% endif %}
         </div>
