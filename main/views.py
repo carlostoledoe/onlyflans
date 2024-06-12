@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from main.forms import ContactForm
 from main.models import Contact, Flan
+from django.contrib.auth.decorators import login_required
 
 import json
 import os
@@ -11,6 +12,7 @@ def index(request):
     context = {'flanes': flanes_publicos}
     return render(request, 'index.html', context)
 
+@login_required
 def welcome(request):
     flanes_privados = Flan.objects.filter(is_private=True)
     context = {'flanes': flanes_privados}
