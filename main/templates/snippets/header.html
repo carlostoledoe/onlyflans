@@ -2,3 +2,14 @@
 <div class="text-center">
     <a href="/"><img src="{% static 'img/logo.png' %}" alt="logo Onlyflans" class="my-3"></a>
 </div>
+<div class="text-end">
+    {% if user.is_authenticated %}
+        <div class="d-flex align-items-center justify-content-end">
+            <p class="mb-1">Bienvenido, <span class="user-name-color">{{ user.username }}</span></p>
+        </div>
+    {% else %}
+        <div class="d-flex align-items-center justify-content-end">
+            <p class="mb-1">Por favor, inicia sesión</p>
+        </div>
+    {% endif %}
+</div>
