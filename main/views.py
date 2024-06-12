@@ -40,6 +40,12 @@ def prices(request):
 def ayuda(request):
     return render(request, 'ayuda.html')
 
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')
+
 # def contact_form(request):
 #     errores = [] 
 #     customer_name = request.POST['customer_name']
