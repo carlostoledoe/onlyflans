@@ -30,13 +30,13 @@
         {% endif %}
       </ul>
       <div class="d-flex">
-        <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Login</a>
-        <!-- <a href="#" class="btn btn-danger btn-sm">Logout</a> -->
         {% if user.is_authenticated %}
           <form id="logout-form" action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger ms-2 btn-sm">Logout</button>
+            <button type="submit" class="btn btn-danger ms-2 btn-sm">Salir</button>
           </form>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Ingresar</a>
         {% endif %}
       </div>
     </div>
