@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from main.forms import ContactForm
 from main.models import Contact, Flan
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth import logout
 
 import json
 import os
@@ -70,3 +72,7 @@ def register(request):
 def success(request):
     return render(request, 'success.html')
 
+def logout_view(request):
+    logout(request)
+    messages.success(request, "¡Has salido exitosamente!")
+    return redirect('/')
