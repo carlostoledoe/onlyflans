@@ -30,7 +30,7 @@
         {% endif %}
       </ul>
       <div class="d-flex">
-        <a href="/login" class="btn btn-primary btn-sm">Login</a>
+        <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Login</a>
         <!-- <a href="#" class="btn btn-danger btn-sm">Logout</a> -->
         {% if user.is_authenticated %}
           <form id="logout-form" action="{% url 'logout' %}" method="post">
