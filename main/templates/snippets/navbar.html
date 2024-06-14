@@ -20,12 +20,13 @@
         <li class="nav-item">
           <a class="nav-link" href="/ayuda">Ayuda</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register">Regístrate</a>
-        </li>
         {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link text-primary" href="/welcome">Bienvenido</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-success" href="{% url 'register' %}">Regístrate</a>
           </li>
         {% endif %}
       </ul>

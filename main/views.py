@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from main.forms import ContactForm
+from main.forms import ContactForm, RegisterForm
 from main.models import Contact, Flan
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -44,7 +45,28 @@ def ayuda(request):
     return render(request, 'ayuda.html')
 
 def register(request):
-    return render(request, 'register.html')
+    form = RegisterForm()
+    context = {'form': form}
+    
+    if request.method == 'GET':
+        return render(request, 'registration/register.html', context)
+    # En caso que sea post:
+    form = RegisterForm(request.POST)
+    if form.is_valid():
+        data = form.cleaned_data
+        # Validación igualdad de password ingresado:
+        if data['password'] != data['passRepeat']:
+            messages.error(request, 'Ambas contraseñas deben ser iguales')
+            return redirect('/accounts/register')
+        # En caso que sean iguales, crea el usuario:
+        User.objects.create_user(
+            data['username'],
+            data['email'],
+            data['password']
+        )
+        messages.success(request, 'Usuario creado exitosamente!')
+    # Si llega aquí, es porque se creó el usuario
+    return redirect('/')
 
 def success(request):
     return render(request, 'success.html')
