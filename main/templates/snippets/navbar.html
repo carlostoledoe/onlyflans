@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg mb-3" style="background-color: #fff4ed;">
+<nav class="navbar navbar-expand-lg mb-3 mt-2" style="background-color: #fff4ed;">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,16 +33,6 @@
           <a class="nav-link" href="{% url 'pruebas' %}">Pruebas</a>
         </li>
       </ul>
-      <div class="d-flex">
-        {% if user.is_authenticated %}
-          <form id="logout-form" action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger ms-2 btn-sm">Salir</button>
-          </form>
-        {% else %}
-          <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Ingresar</a>
-        {% endif %}
-      </div>
     </div>
   </div>
 </nav>
