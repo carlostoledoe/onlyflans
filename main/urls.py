@@ -9,7 +9,6 @@ urlpatterns = [
     path('ayuda/', ayuda),
     path('success/', success),    
     path('welcome/', welcome),    
-    # path('login/', login),     
     path('register/', register), 
     path('logout/', logout_view, name='logout'),    
 ]

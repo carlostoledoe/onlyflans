@@ -5,10 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import logout
 
-import json
-import os
 
-# Create your views here.
 def index(request):
     flanes_publicos = Flan.objects.filter(is_private=False)
     context = {'flanes': flanes_publicos}
@@ -44,30 +41,8 @@ def prices(request):
 def ayuda(request):
     return render(request, 'ayuda.html')
 
-# def login(request):
-#     return render(request, 'login.html')
-
 def register(request):
     return render(request, 'register.html')
-
-# def contact_form(request):
-#     errores = [] 
-#     customer_name = request.POST['customer_name']
-#     customer_email = request.POST['customer_email']
-#     message = request.POST['message']
-    
-#     if len(customer_name) > 10:
-#         errores.append('Largo del nombre mayor a 10 carácteres')
-
-#     if not '@' in customer_email:
-#         errores.append('Falta el arroba en el correo')
-
-#     context = {'errores': errores}
-
-#     if len(errores) > 0:
-#         return render(request, 'welcome.html', context)
-#     else:
-#         return render(request, 'success.html', context)
 
 def success(request):
     return render(request, 'success.html')
