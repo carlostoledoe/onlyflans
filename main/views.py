@@ -51,7 +51,7 @@ def success(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, "¡Has salido exitosamente!")
+    messages.warning(request, "¡Has salido exitosamente!")
     return redirect('/')
 
 class LoginViewPropia(SuccessMessageMixin ,LoginView):
