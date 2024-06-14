@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from main.forms import ContactForm, RegisterForm
 from main.models import Contact, Flan
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.messages.views import SuccessMessageMixin
@@ -39,7 +39,11 @@ def contact(request):
         return render(request, 'contact.html', context) # Se vuelve a renderizar la plantilla con el contexto actualizado.
 
 def prices(request):
-    return render(request, 'prices.html')
+    if request.user.has_perm('main.delete_flan'):
+        messages.warning(request, "Puedes borrar flanes")
+        return render(request, 'prices.html')
+    else:
+        return render(request, 'prices.html')
 
 def ayuda(request):
     return render(request, 'ayuda.html')
@@ -78,3 +82,8 @@ def logout_view(request):
 
 class LoginViewPropia(SuccessMessageMixin ,LoginView):
     success_message = 'Bienvenido, '
+
+# Esta vista solo la puede ver quien puede borrar flan
+@permission_required('main.delete_flan')
+def pruebas(request):
+    return render(request, 'pruebas.html')
