@@ -4,6 +4,8 @@ from main.models import Contact, Flan
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import LoginView
 
 
 def index(request):
@@ -51,3 +53,6 @@ def logout_view(request):
     logout(request)
     messages.success(request, "¡Has salido exitosamente!")
     return redirect('/')
+
+class LoginViewPropia(SuccessMessageMixin ,LoginView):
+    success_message = 'Bienvenido, '
