@@ -90,8 +90,8 @@ def pruebas(request):
 
 
 
-def testlogin(request):
-    return render (request, 'test_login.html')
+def suscriptions(request):
+    return render (request, 'registration/suscriptions.html')
 
 def loginFree(request):
     return render(request, 'registration/loginfree.html')
