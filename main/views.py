@@ -92,3 +92,12 @@ def pruebas(request):
 
 def testlogin(request):
     return render (request, 'test_login.html')
+
+def loginFree(request):
+    return render(request, 'registration/loginfree.html')
+
+def loginPremium(request):
+    return render(request, 'registration/loginpremium.html')
+
+def loginDiamond(request):
+    return render(request, 'registration/logindiamond.html')
