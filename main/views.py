@@ -51,7 +51,7 @@ def ayuda(request):
 def register(request):
     form = RegisterForm()
     context = {'form': form}
-    
+
     if request.method == 'GET':
         return render(request, 'registration/register.html', context)
     # En caso que sea post:
@@ -87,3 +87,8 @@ class LoginViewPropia(SuccessMessageMixin ,LoginView):
 @permission_required('main.delete_flan')
 def pruebas(request):
     return render(request, 'pruebas.html')
+
+
+
+def testlogin(request):
+    return render (request, 'test_login.html')

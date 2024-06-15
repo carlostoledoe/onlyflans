@@ -1,9 +1,10 @@
 /* Estilos generales */
 a:hover {
-    color:#00afe8 !important;
+    color: #00afe8 !important;
 }
 
-h1, p {
+h1,
+p {
     color: rgb(77, 77, 77);
 }
 
@@ -11,8 +12,19 @@ a {
     text-decoration: none;
 }
 
+
+
 body {
     font-family: "Urbanist", sans-serif;
+    background-image: linear-gradient(180deg, #eee, #fff 100px, #fff);
+}
+
+.container {
+    max-width: 960px;
+}
+
+.pricing-header {
+    max-width: 700px;
 }
 
 /* Estilos del Navbar */
@@ -22,13 +34,13 @@ body {
 }
 
 .btn-outline-primary:hover {
-    background-color:#00afe8;
+    background-color: #00afe8;
     color: white;
     border-color: #00afe8;
 }
 
-.nav-link:hover {   
-    color:#00afe8;
+.nav-link:hover {
+    color: #00afe8;
 }
 
 .user-name-color {
@@ -42,7 +54,7 @@ body {
 }
 
 .precio-normal {
-    color:rgb(64, 64, 255);
+    color: rgb(64, 64, 255);
     font-size: 0.9rem;
 }
 
@@ -72,34 +84,50 @@ body {
 #toasty {
     height: 8rem;
     animation-name: aparicion;
-    animation-duration: 1s; /* Duración de la animación */
-    animation-delay: 3s; /* Retardo antes de comenzar la animación */
-    animation-fill-mode: forwards; /* Asegura que la imagen se mantenga en la posición final después de la animación */
-    position: absolute; /* Posiciona con respecto al contenedor */
-    bottom: 0.2rem; /* Posiciona la imagen en la esquina inferior */
-    right: 0; /* Posiciona la imagen en la esquina derecha */
-    transform: translateX(100%); /* Mantiene la imagen oculta fuera de la pantalla hacia la derecha antes de la animación */
+    animation-duration: 1s;
+    /* Duración de la animación */
+    animation-delay: 3s;
+    /* Retardo antes de comenzar la animación */
+    animation-fill-mode: forwards;
+    /* Asegura que la imagen se mantenga en la posición final después de la animación */
+    position: absolute;
+    /* Posiciona con respecto al contenedor */
+    bottom: 0.2rem;
+    /* Posiciona la imagen en la esquina inferior */
+    right: 0;
+    /* Posiciona la imagen en la esquina derecha */
+    transform: translateX(100%);
+    /* Mantiene la imagen oculta fuera de la pantalla hacia la derecha antes de la animación */
 }
 
 @keyframes aparicion {
-    0%, 100% { 
-        transform: translateX(100%); /* Comienza y termina fuera de la pantalla hacia la derecha */
+
+    0%,
+    100% {
+        transform: translateX(100%);
+        /* Comienza y termina fuera de la pantalla hacia la derecha */
     }
-    47% { 
-        transform: translateX(0); /* Trae la imagen completamente a la vista */
+
+    47% {
+        transform: translateX(0);
+        /* Trae la imagen completamente a la vista */
     }
-    70% { 
-        transform: translateX(0); /* Mantiene la imagen en la vista */
+
+    70% {
+        transform: translateX(0);
+        /* Mantiene la imagen en la vista */
     }
-    53% { 
-        transform: translateX(0); /* Comienza a mover la imagen fuera de la pantalla */
+
+    53% {
+        transform: translateX(0);
+        /* Comienza a mover la imagen fuera de la pantalla */
     }
 }
 
 /* Estilos de header */
 
-@media (max-width: 575.98px) { 
-    header img  {
+@media (max-width: 575.98px) {
+    header img {
         height: 3rem;
     }
 }
