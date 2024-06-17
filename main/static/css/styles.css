@@ -130,3 +130,25 @@ body {
         height: 3rem;
     }
 }
+
+/* Banner deslizante */
+.sliding-banner {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #00afe8;
+    color: #fff;
+}
+
+.banner-item {
+    display: inline-block;
+    padding: 0.3rem;
+    position: relative;
+    right: -100%;
+    animation: slideInfinitely 40s linear infinite;
+}
+
+@keyframes slideInfinitely {
+    0% { right: -100%; }
+    100% { right: 100%; }
+}
