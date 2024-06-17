@@ -88,16 +88,16 @@ class LoginViewPropia(SuccessMessageMixin ,LoginView):
 def pruebas(request):
     return render(request, 'pruebas.html')
 
-
-
+# Esta vista solo renderiza los tipos de suscripciones
 def suscriptions(request):
     return render (request, 'registration/suscriptions.html')
 
-def loginFree(request):
-    return render(request, 'registration/loginfree.html')
 
-def loginPremium(request):
-    return render(request, 'registration/loginpremium.html')
+def registerfree(request):
+    return render(request, 'registration/registerfree.html')
 
-def loginDiamond(request):
-    return render(request, 'registration/logindiamond.html')
+def registerpremium(request):
+    return render(request, 'registration/registerpremium.html')
+
+def registerdiamond(request):
+    return render(request, 'registration/registerdiamond.html')

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3 class="text-center my-4">Suscripcion Diamante</h3>
+    <p class="text-center">Te estas suscribiendo la Plan Diamante. Con el podrás acceder a un montón de beneficios como: Ver todos los flanes del catálogo, votar y comentar flanes, crear flanes nuevos y descuentos especiales.</p>
+    <p class="fs-5 text-center fw-bold"> Suscripcion $5990</p>
+    <div class="row">
+        <div class="col-4 offset-4">
+            <form method="post" action="{% url 'registerdiamond' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Ingresa tu usuario:</label>
+                    <input type="text" class="form-control" name="{{ form.username.name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingresa tu email:</label>
+                    <input type="email" class="form-control" name="{{ form.email.name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingresa tu contraseña:</label>
+                    <input type="password" class="form-control" name="{{ form.password1.name }}" required>
+                </div>                
+                <div class="mb-3">
+                    <label class="form-label">Repite tu contraseña:</label>
+                    <input type="password" class="form-control" name="{{ form.password2.name }}" required>
+                </div>
+                <button type="submit" class="btn btn-color"
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip"
+                    data-bs-title="Estás a un paso de entrar...">Ingresar</button>
+        </div>
+    </div>
+{% endblock %}

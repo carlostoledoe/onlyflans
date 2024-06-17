@@ -4,7 +4,7 @@
 <h1 class="text-center">Regístrate en Onlyflans:</h1>
 <div class="row">
     <div class="col-4 offset-4">
-        <form method="post" action="{% url 'suscriptions' %}">
+        <form method="post" action="{% url 'register' %}">
             {% csrf_token %} 
             {{ form }}
             <button type="submit" class="btn btn-color">Registrarse</button>
