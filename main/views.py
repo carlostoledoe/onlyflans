@@ -7,14 +7,12 @@ from django.contrib.auth import logout
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
-from main.data.api_mindicador import indicators
 
 
 def index(request):
     flanes_publicos = Flan.objects.filter(is_private=False)
     context = {
         'flanes': flanes_publicos,
-        'indicators': indicators
         }
     return render(request, 'index.html', context)
 
