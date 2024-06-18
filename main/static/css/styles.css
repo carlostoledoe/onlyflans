@@ -152,3 +152,10 @@ body {
     0% { right: -100%; }
     100% { right: 100%; }
 }
+
+/* Mensaje de error */
+.alert-error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
