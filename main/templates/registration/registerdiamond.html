@@ -6,24 +6,9 @@
     <p class="fs-5 text-center fw-bold"> Suscripcion $5990</p>
     <div class="row">
         <div class="col-4 offset-4">
-            <form method="post" action="{% url 'registerdiamond' %}">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label class="form-label">Ingresa tu usuario:</label>
-                    <input type="text" class="form-control" name="{{ form.username.name }}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Ingresa tu email:</label>
-                    <input type="email" class="form-control" name="{{ form.email.name }}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Ingresa tu contraseña:</label>
-                    <input type="password" class="form-control" name="{{ form.password1.name }}" required>
-                </div>                
-                <div class="mb-3">
-                    <label class="form-label">Repite tu contraseña:</label>
-                    <input type="password" class="form-control" name="{{ form.password2.name }}" required>
-                </div>
+            <form method="post">
+                {% csrf_token %} 
+                {{ form.as_p }}
                 <button type="submit" class="btn btn-color"
                     data-bs-toggle="tooltip" data-bs-placement="top"
                     data-bs-custom-class="custom-tooltip"

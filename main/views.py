@@ -7,14 +7,24 @@ from django.contrib.auth import logout
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
+from main.models import UserProfile
 
 
 def index(request):
-    flanes_publicos = Flan.objects.filter(is_private=False)
-    context = {
-        'flanes': flanes_publicos,
-        }
-    return render(request, 'index.html', context)
+    if request.user.is_authenticated:
+        user_profile = UserProfile.objects.get(user=request.user)
+        flanes_publicos = Flan.objects.filter(is_private=False)
+        context = {
+            'flanes': flanes_publicos,
+            'user_type': user_profile.user_type
+            }
+        return render(request, 'index.html', context)
+    else:
+        flanes_publicos = Flan.objects.filter(is_private=False)
+        context = {
+            'flanes': flanes_publicos,
+            }
+        return render(request, 'index.html', context)
 
 @login_required
 def welcome(request):
@@ -50,30 +60,6 @@ def prices(request):
 def ayuda(request):
     return render(request, 'ayuda.html')
 
-def register(request):
-    form = RegisterForm()
-    context = {'form': form}
-
-    if request.method == 'GET':
-        return render(request, 'registration/register.html', context)
-    # En caso que sea post:
-    form = RegisterForm(request.POST)
-    if form.is_valid():
-        data = form.cleaned_data
-        # Validación igualdad de password ingresado:
-        if data['password'] != data['passRepeat']:
-            messages.error(request, 'Ambas contraseñas deben ser iguales')
-            return redirect('/accounts/register')
-        # En caso que sean iguales, crea el usuario:
-        User.objects.create_user(
-            data['username'],
-            data['email'],
-            data['password']
-        )
-        messages.success(request, 'Usuario creado exitosamente!')
-    # Si llega aquí, es porque se creó el usuario
-    return redirect('/')
-
 def success(request):
     return render(request, 'success.html')
 
@@ -95,11 +81,39 @@ def suscriptions(request):
     return render (request, 'registration/suscriptions.html')
 
 
+def register_user(request, user_type):
+    form = RegisterForm()
+    context = {'form': form}
+    
+    if request.method == 'GET':
+        return render(request, f'registration/register{user_type}.html', context)
+    
+    form = RegisterForm(request.POST)
+    if form.is_valid():
+        data = form.cleaned_data
+        if data['password'] != data['passRepeat']:
+            messages.error(request, 'Ambas contraseñas deben ser iguales')
+            return redirect(f'/accounts/register{user_type}')
+        user = User.objects.create_user(
+            username=data['username'],
+            email=data['email'],
+            password=data['password']
+        )
+        UserProfile.objects.create(
+            user=user,
+            user_type=user_type
+        )
+        messages.success(request, '¡Usuario creado! por favor, inicie sesión')
+        return redirect('/')
+    
+    context['form'] = form
+    return render(request, f'registration/register{user_type}.html', context)
+
 def registerfree(request):
-    return render(request, 'registration/registerfree.html')
+    return register_user(request, 'free')
 
 def registerpremium(request):
-    return render(request, 'registration/registerpremium.html')
+    return register_user(request, 'premium')
 
 def registerdiamond(request):
-    return render(request, 'registration/registerdiamond.html')
+    return register_user(request, 'diamond')

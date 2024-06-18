@@ -7,6 +7,11 @@
     {% include 'snippets/carousel.html' %}
   {% endif %}
 
+    <!-- Prueba tipo de usuario  -->
+    {% if user_type %}
+      <h3>Es usuario {{ user.username }} es {{ user_type }}</h3>
+    {% endif %}
+
   <h1 class="my-3 mt-5">Lista de Flanes Públicos</h1>
   <div class="row">
     {% for flan in flanes %}

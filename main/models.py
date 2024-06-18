@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -29,3 +30,16 @@ class Contact(models.Model):
         name = self.nombre
         message = self.mensaje
         return f'{name} : {message}'
+
+class UserProfile(models.Model):
+    USER_TYPE_CHOICES = (
+        ('free', 'Free'),
+        ('premium', 'Premium'),
+        ('diamond', 'Diamond'),
+    )
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
+
+    def __str__(self):
+        return self.user.username
