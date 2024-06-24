@@ -7,6 +7,11 @@ from django.dispatch import receiver
 # Create your models here.
 
 class Flan(models.Model):
+    FLAN_TYPE_CHOICES = (
+        ('free', 'Free'),
+        ('premium', 'Premium'),
+        ('diamond', 'Diamond'),
+    )
     flan_uuid = models.UUIDField(
         default=uuid.uuid4,
         editable=False,
@@ -18,10 +23,13 @@ class Flan(models.Model):
     description = models.TextField()
     image_url = models.URLField()
     slug = models.SlugField()
-    is_private = models.BooleanField()
+    is_private = models.BooleanField(default=0)
+    type_flan = models.CharField(max_length=10, choices=FLAN_TYPE_CHOICES, default='free')
     
     def __str__(self):
-        return self.name
+        name = self.name
+        type_flan = self.type_flan
+        return f'{name} - {type_flan}'
 
 class Contact(models.Model):
     nombre = models.CharField(max_length=50)
