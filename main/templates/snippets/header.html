@@ -16,7 +16,7 @@
 <div>
     {% if user.is_authenticated %}
         <div class="d-flex align-items-center justify-content-end">
-            <p class="mb-1">Bienvenido, <span class="user-name-color">{{ user.username }}</span></p>
+            <p class="mb-1">Bienvenido, <span class="user-name-color">{{ user.username }}</span> | Categoría: <span class="user-name-color">{{ user_type | title }} </span></p>
             <form id="logout-form" action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger ms-2 btn-sm">Cerrar Sesión</button>
