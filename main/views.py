@@ -13,14 +13,18 @@ from main.models import UserProfile
 def index(request):
     if request.user.is_authenticated:
         user_profile = UserProfile.objects.get(user=request.user)
-        flanes_publicos = Flan.objects.filter(is_private=False)
         context = {
-            'flanes': flanes_publicos,
-            'user_type': user_profile.user_type
+            'flanes': []
             }
+        if user_profile.user_type == 'free':
+            context['flanes'] = Flan.objects.filter(type_flan='free')
+        elif user_profile.user_type == 'premium':
+            context['flanes'] = Flan.objects.filter(type_flan='free') | Flan.objects.filter(type_flan='premium')
+        elif user_profile.user_type == 'diamond':
+            context['flanes'] = Flan.objects.filter(type_flan='free') | Flan.objects.filter(type_flan='premium') | Flan.objects.filter(type_flan='diamond')
         return render(request, 'index.html', context)
     else:
-        flanes_publicos = Flan.objects.filter(is_private=False)
+        flanes_publicos = Flan.objects.filter(type_flan='free')
         context = {
             'flanes': flanes_publicos,
             }

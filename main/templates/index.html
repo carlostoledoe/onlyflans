@@ -7,7 +7,7 @@
     {% include 'snippets/carousel.html' %}
   {% endif %}
 
-  <h1 class="my-3 mt-5">Lista de Flanes Públicos</h1>
+  <h1 class="my-3 mt-5">Tus flanes {{ user_type | title }}:</h1>
   <div class="row">
     {% for flan in flanes %}
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
@@ -19,13 +19,7 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Precio: (No definido)</li>
-            <li class="list-group-item">
-              {% if flan.is_private %}
-                <span class="en-oferta">Flan Privado</span>
-              {% else %}
-                <span class="precio-normal">Flan Publico</span>
-              {% endif %}
-            </li>
+            <li class="list-group-item">Categoría: <span class="text-primary">{{ flan.type_flan}}</span></li>
           </ul>
           <div class="card-body">
             <a href="#" class="card-link">Pedir</a>

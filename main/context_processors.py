@@ -12,4 +12,4 @@ def type_user(request):
         user_profile = UserProfile.objects.get(user=request.user)
         return {'user_type': user_profile.user_type}
     else:
-        return {'user_type': 'Hola'}
+        return {'user_type': ''}
