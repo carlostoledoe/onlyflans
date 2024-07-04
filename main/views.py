@@ -97,7 +97,7 @@ def register_user(request, user_type):
         data = form.cleaned_data
         if data['password'] != data['passRepeat']:
             messages.error(request, 'Ambas contraseñas deben ser iguales')
-            return redirect(f'/accounts/register{user_type}')
+            return redirect(f'/register{user_type}')
         user = User.objects.create_user(
             username=data['username'],
             email=data['email'],
